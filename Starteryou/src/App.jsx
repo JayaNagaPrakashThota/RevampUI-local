@@ -19,6 +19,7 @@ import { UserProvider } from "./context/UserContext";
 import LoginPage from "./components/LoginPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import JobPage from "./pages/JobPage";
 
 const Layout = () => {
   const location = useLocation();
@@ -37,6 +38,7 @@ const Layout = () => {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/jobs" element={<JobPortalPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/job2" element={<JobPage />} />
         {/* Admin Protected Routes */}
         <Route
           path="/admin"
@@ -49,6 +51,10 @@ const Layout = () => {
         <Route
           path="/admin/jobs"
           element={<AdminProtectedRoute element={<JobPortalPage />} />}
+        />
+        <Route
+          path="/admin/job2"
+          element={<AdminProtectedRoute element={<JobPage />} />}
         />
       </Routes>
       {location.pathname !== "/login" && <Footer />}
