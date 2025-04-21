@@ -23,6 +23,7 @@ import EducationPage from "./pages/EducationPage";
 import Navbar from "./components/Common/Navbar";
 import Footer from "./components/Common/Footer";
 import Signup from "./components/Auth/Signup";
+import ServicePage from "./pages/ServicePage";
 
 const Layout = () => {
   const location = useLocation();
@@ -44,6 +45,7 @@ const Layout = () => {
         <Route path="/education" element={<EducationPage />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/job2" element={<JobPage />} />
+        <Route path="/service" element={<ServicePage />} />
         {/* Admin Protected Routes */}
         <Route
           path="/admin"

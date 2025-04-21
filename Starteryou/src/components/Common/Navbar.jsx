@@ -77,6 +77,14 @@ const Navbar = ({ isEduHero }) => {
             About Us
           </Link>
         </li>
+        <li>
+          <Link
+            to={isAdmin ? "/admin/service" : "/service"}
+            className="cursor-pointer"
+          >
+            SERVICES
+          </Link>
+        </li>
       </ul>
 
       {/* Signup Button Links */}
@@ -201,6 +209,19 @@ const Navbar = ({ isEduHero }) => {
               onClick={() => setIsMenuOpen(false)}
             >
               About Us
+            </Link>
+          </li>
+          <li className="flex items-center space-x-3">
+            <img
+              src="/ServicePage/servicePage.png"
+              alt="About Us"
+              className="w-5 h-5"
+            />
+            <Link
+              to={isAdmin ? "/admin/service" : "/service"}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              SERVICES
             </Link>
           </li>
         </ul>
