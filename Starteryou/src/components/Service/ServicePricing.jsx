@@ -1,6 +1,6 @@
 import { useState } from "react";
 export default function ServicePricing() {
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState(1);
   const plans = [
     {
       title: "Starter",

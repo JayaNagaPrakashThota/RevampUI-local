@@ -17,8 +17,8 @@ export default function OurService() {
     },
   ];
   return (
-    <div className="max-w-7xl mx-auto py-8 sm:py-10 px-4 sm:px-6">
-      <div className="text-left mb-8 sm:mb-12 ml-0 sm:ml-10 md:ml-20">
+    <div className="max-w-7xl mx-auto py-8 sm:py-10 px-4 sm:px-6 lg:px-8">
+      <div className="text-left mb-8 sm:mb-12">
         <h3 className="text-indigo-600 text-xs sm:text-sm font-semibold mb-2 sm:mb-3">
           OUR SERVICES
         </h3>
@@ -26,7 +26,7 @@ export default function OurService() {
           Tailored solutions, expert execution, unmatched quality.
         </h2>
       </div>
-      <div className="grid gap-4 sm:gap-6 md:gap-8 px-2 sm:px-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 sm:gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {services.map((service, index) => (
           <div
             key={index}
