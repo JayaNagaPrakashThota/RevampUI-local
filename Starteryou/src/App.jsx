@@ -24,7 +24,6 @@ import Navbar from "./components/Common/Navbar";
 import Footer from "./components/Common/Footer";
 import Signup from "./components/Auth/Signup";
 import ServicePage from "./pages/ServicePage";
-import PostDetail from "./components/Education/PostDetail";
 
 const Layout = () => {
   const location = useLocation();
@@ -47,7 +46,6 @@ const Layout = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/job2" element={<JobPage />} />
         <Route path="/service" element={<ServicePage />} />
-        <Route path="/posts/:id" element={<PostDetail />} />
         {/* Admin Protected Routes */}
         <Route
           path="/admin"

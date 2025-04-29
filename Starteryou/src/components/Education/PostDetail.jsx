@@ -1,22 +1,20 @@
-import { useParams } from "react-router-dom";
 import posts from "./posts";
 
-const PostDetail = () => {
-  const { id } = useParams();
-  const post = posts.find((p) => p.id === id);
+// eslint-disable-next-line react/prop-types
+const PostDetail = ({ postId }) => {
+  const post = posts.find((p) => p.id === postId);
+  console.log(postId);
 
-  if (!post) {
-    return <div className="p-8">Post not found.</div>;
-  }
+  if (!post) return <div className="p-8">Post not found.</div>;
 
   return (
     <div className=" font-poppins max-w-7xl mx-auto px-4 py-8 pt-16">
       {/* First Section - Header Area */}
       <div className="flex flex-col lg:flex-row gap-8 mb-12">
         {/* Left Column - Title and Author Info */}
-        <div className="lg:w-[40%]">
-          <h1 className="text-2xl font-bold">{post.title}</h1>
-          <p className="text-500 mt-2">{post.description}</p>
+        <div className="lg:w-[55%]">
+          <h1 className="text-3xl font-bold">{post.title}</h1>
+          <p className="text-500 text-lg mt-2">{post.description}</p>
 
           {/* Updated margin-top and text size */}
           <div className="text-gray-500 text-sm mt-4">
@@ -40,7 +38,7 @@ const PostDetail = () => {
         </div>
 
         {/* Right Column - Cover Image */}
-        <div className="lg:w-[60%]">
+        <div className="lg:w-[45%]">
           <img
             src={post.image}
             alt="Cover"

@@ -10,9 +10,7 @@ export default function EducationPage() {
   return (
     <div>
       <EduHero />
-      <div id="career-posts">
-        <CareerPosts />
-      </div>
+      <CareerPosts id="career-posts" />
       <YourJourney />
       <ComprehensiveFeatures />
       <UnlockPotential />

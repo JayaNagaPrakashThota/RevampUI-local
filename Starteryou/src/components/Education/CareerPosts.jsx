@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom"; // import Link if using React Router
+import { useState } from "react";
+import PostDetail from "./PostDetail";
 const posts = [
   {
     id: "post-1",
@@ -68,9 +69,11 @@ const posts = [
   },
 ];
 
-const CareerPosts = () => {
+const CareerPosts = ({ id }) => {
+  const [selectedPost, setSelectedPost] = useState(null); // Track selected post
+
   return (
-    <div className="px-4 py-10 max-w-screen-xl mx-auto">
+    <div id={id} className="px-4 py-10 max-w-screen-xl mx-auto">
       <div className="mb-10">
         <h1 className="text-4xl font-semibold font-['Inter'] text-center">
           Career & Professional Development Posts
@@ -79,46 +82,59 @@ const CareerPosts = () => {
           Explore our library made by Starteryou below!
         </p>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {posts.map((post, index) => (
-          <div
-            key={index}
-            className="bg-white rounded-xl shadow hover:shadow-lg transition duration-300"
+
+      {selectedPost ? (
+        <div className="relative">
+          {/* Back Button */}
+          <button
+            onClick={() => setSelectedPost(null)}
+            className="absolute top-0 left-0 bg-[#6E00BF] text-white font-medium py-2 px-4 rounded-md"
           >
-            <img
-              src={post.image}
-              alt={post.title}
-              className="w-full h-52 object-cover rounded-t-xl"
-            />
-            <div className="p-4">
-              {/* Title and Description now link to detail page */}
-              <Link to={`/posts/${post.id}`} className="block hover:underline">
-                <h2 className="text-sm font-semibold text-lg mb-1 text-blue-700">
+            ← Back
+          </button>
+
+          {/* Post Detail */}
+          <PostDetail postId={selectedPost.id} />
+        </div>
+      ) : (
+        // Show the list if no post is selected
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {posts.map((post) => (
+            <div
+              key={post.id}
+              onClick={() => setSelectedPost(post)} // Set selected post
+              className="bg-white rounded-xl shadow hover:shadow-lg transition duration-300 cursor-pointer"
+            >
+              <img
+                src={post.image}
+                alt={post.title}
+                className="w-full h-52 object-cover rounded-t-xl"
+              />
+              <div className="p-4">
+                <h2 className="text-sm font-semibold text-lg mb-1 text-700">
                   {post.title}
                 </h2>
-              </Link>
-              <Link to={`/posts/${post.id}`} className="block hover:underline">
                 <p className="text-sm text-gray-600 mb-3">{post.description}</p>
-              </Link>
-              <div className="flex items-start gap-2 text-sm text-gray-500">
-                <img
-                  src={post.authorImage}
-                  alt={post.author}
-                  className="w-8 h-8 rounded-full object-cover mt-0.5"
-                />
-                <div>
-                  <div className="font-medium text-gray-800 leading-tight">
-                    {post.author}
-                  </div>
-                  <div className="text-gray-500 text-xs">
-                    {post.date} - {post.readTime}
+                <div className="flex items-start gap-2 text-sm text-gray-500">
+                  <img
+                    src={post.authorImage}
+                    alt={post.author}
+                    className="w-8 h-8 rounded-full object-cover mt-0.5"
+                  />
+                  <div>
+                    <div className="font-medium text-gray-800 leading-tight">
+                      {post.author}
+                    </div>
+                    <div className="text-gray-500 text-xs">
+                      {post.date} - {post.readTime}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
